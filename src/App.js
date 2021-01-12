@@ -1,14 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Jumbotron from "./components/Jumbotron/Jumbotron";
+import EmployeeTable from './components/EmployeeTable/EmployeeTable';
 
-class App extends Component {
-  render() {
-    return (
+
+function App () {
+      return (
       <div>
         <Jumbotron />
+       <EmployeeTable />
+        
       </div>
     )
-  }
 }
 
 export default App;
