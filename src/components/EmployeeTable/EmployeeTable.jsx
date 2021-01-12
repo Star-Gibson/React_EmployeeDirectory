@@ -50,7 +50,7 @@ class EmployeeTable extends React.Component {
         }
         this.setState({ results: filteredEmployees })
     };
-    
+
     // --------------------Breaking up Code For Readability-----------------------------------------
 
     //Option 2 - Sort by Last Name
@@ -75,7 +75,7 @@ class EmployeeTable extends React.Component {
         this.setState({ results: filteredEmployees })
     }
 
- // --------------------Breaking up Code For Readability-----------------------------------------
+    // --------------------Breaking up Code For Readability-----------------------------------------
 
 
     //RENDER - Implementing Ternary Operator (Test First)
@@ -88,37 +88,45 @@ class EmployeeTable extends React.Component {
                     <table className="table-responsive text-centered">
                         <thead>
                             <tr>
-                                {/* <th>Employee Badge ID</th> */}
+                                <th>Employee Badge</th>
                                 <th>(F)Name<button className="btn-small" onClick={this.sortFirstName}>SORT</button></th>
                                 <th>(L)Name<button className="btn-small " onClick={this.sortLastName}>SORT</button></th>
-                                {/* <th>Location</th>
-        <th>Email</th>
-        <th>Phone</th> */}
+                                <th>Location</th>
+                                <th>Email</th>
+                                <th>Phone</th>
                             </tr>
                         </thead>
 
 
                         { //Option 1 - Be sure to include this.state.results, then map otherwise sticking of button occurs
-                        this.state.results && this.state.results.map(employeeDirectory => employeeDirectory.name.first.toLowerCase().includes(this.state.search) ?
+                            this.state.results && this.state.results.map(employeeDirectory => employeeDirectory.name.first.toLowerCase().includes(this.state.search) ?
                                 < tbody key={employeeDirectory.id.value}>
                                     <tr>
+                                        <td><img src={employeeDirectory.picture.medium} alt="employeeBadge" /></td>
                                         <td>{employeeDirectory.name.first}</td>
                                         <td>{employeeDirectory.name.last}</td>
+                                        <td>{employeeDirectory.location.city}, {employeeDirectory.location.state}</td>
+                                        <td>{employeeDirectory.email}</td>
+                                        <td>{employeeDirectory.phone}</td>
                                     </tr>
                                 </tbody>
 
                                 :
-                            // Option 2
-                          employeeDirectory.name.last.toLowerCase().includes(this.state.search) ?
-                            < tbody key={employeeDirectory.id.value}>
-                                <tr>
-                                    <td>{employeeDirectory.name.first}</td>
-                                    <td>{employeeDirectory.name.last}</td>
-                                </tr>
-                            </tbody>
-                                :
-                            null
-)}
+                                // Option 2
+                                employeeDirectory.name.last.toLowerCase().includes(this.state.search) ?
+                                    < tbody key={employeeDirectory.id.value}>
+                                       <tr>
+                                        <td><img src={employeeDirectory.picture.medium} alt="employeeBadge" /></td>
+                                        <td>{employeeDirectory.name.first}</td>
+                                        <td>{employeeDirectory.name.last}</td>
+                                        <td>{employeeDirectory.location.city}, {employeeDirectory.location.state}</td>
+                                        <td>{employeeDirectory.email}</td>
+                                        <td>{employeeDirectory.phone}</td>
+                                    </tr>
+                                </tbody>
+                                    :
+                                    null
+                            )}
                     </table>
                 </div>
             </div >
