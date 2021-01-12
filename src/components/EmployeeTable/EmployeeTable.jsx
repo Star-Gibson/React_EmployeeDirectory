@@ -82,15 +82,15 @@ class EmployeeTable extends React.Component {
     render() {
         return (
             <div>
+<div className="container mx-auto">
                 <Search handleInputChange={this.handleInputChange} search={this.state.search} />
-
                 <div className="table">
-                    <table className="table-responsive text-centered">
+                    <table className="table-responsive table-dark text-centered">
                         <thead>
                             <tr>
                                 <th>Employee Badge</th>
-                                <th>(F)Name<button className="btn-small" onClick={this.sortFirstName}>SORT</button></th>
-                                <th>(L)Name<button className="btn-small " onClick={this.sortLastName}>SORT</button></th>
+                               <th>First <button className="" onClick={this.sortFirstName}>SORT</button></th>
+                                <th>Last <button className="btn-small " onClick={this.sortLastName}>SORT</button></th>
                                 <th>Location</th>
                                 <th>Email</th>
                                 <th>Phone</th>
@@ -100,7 +100,7 @@ class EmployeeTable extends React.Component {
 
                         { //Option 1 - Be sure to include this.state.results, then map otherwise sticking of button occurs
                             this.state.results && this.state.results.map(employeeDirectory => employeeDirectory.name.first.toLowerCase().includes(this.state.search) ?
-                                < tbody key={employeeDirectory.id.value}>
+                                < tbody key={employeeDirectory.login.username}>
                                     <tr>
                                         <td><img src={employeeDirectory.picture.medium} alt="employeeBadge" /></td>
                                         <td>{employeeDirectory.name.first}</td>
@@ -114,7 +114,7 @@ class EmployeeTable extends React.Component {
                                 :
                                 // Option 2
                                 employeeDirectory.name.last.toLowerCase().includes(this.state.search) ?
-                                    < tbody key={employeeDirectory.id.value}>
+                                    < tbody key={employeeDirectory.login.username}>
                                        <tr>
                                         <td><img src={employeeDirectory.picture.medium} alt="employeeBadge" /></td>
                                         <td>{employeeDirectory.name.first}</td>
@@ -128,6 +128,7 @@ class EmployeeTable extends React.Component {
                                     null
                             )}
                     </table>
+                    </div>
                 </div>
             </div >
         )
